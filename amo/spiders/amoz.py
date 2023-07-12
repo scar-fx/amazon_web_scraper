@@ -17,11 +17,14 @@ class AmozSpider(scrapy.Spider):
                                                                       'word': word}, dont_filter=True)
 
     def parse(self, response, page_number, word):
+        sleep(3)
         items = response.css('div [data-component-type="s-search-result"]')
-        # next_page = response.css('span .s-pagination-strip a ::attr(href)').get()
-        page_number += 1
-        for item in items:
+        if len(items) < 16:
             sleep(2)
+            yield response.follow(response.url, callback=self.parse, cb_kwargs={'page_number': response.page_number,
+                                                                                'word': word}, dont_filter=True)
+        # next_page = response.css('span .s-pagination-strip a ::attr(href)').get()
+        for item in items:
             n = {}
             # url
             nex = item.css('h2 a ::attr(href)').get()
@@ -31,14 +34,18 @@ class AmozSpider(scrapy.Spider):
             # rating
             n['rating'] = item.css('div .a-row span ::attr(aria-label)').get()
             # num of ratings
-            n['number_of_ratings'] = item.css('div .a-row span ::attr(aria-label)')[1].get()
-
+            try:
+                n['number_of_ratings'] = item.css('div .a-row span ::attr(aria-label)')[1].get()
+            except:
+                n['number_of_ratings'] = 0
             yield response.follow(next_url, callback=self.parse_page, cb_kwargs={'pd': n,
                                                                                  'link': next_url}, dont_filter=True)
 
+        page_number += 1
         if page_number <= 20:
             sleep(2)
             next_page_url = "https://www.amazon.com/s?k=" + word + f'&page={page_number}'
+
             yield response.follow(next_page_url, callback=self.parse, cb_kwargs={'page_number': page_number,
                                                                                  'word': word},
                                   dont_filter=True)

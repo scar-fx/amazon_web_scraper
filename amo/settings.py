@@ -12,7 +12,7 @@ BOT_NAME = "amo"
 SPIDER_MODULES = ["amo.spiders"]
 NEWSPIDER_MODULE = "amo.spiders"
 
-SCRAPEOPS_API_KEY = 'YOUR API KEY'
+SCRAPEOPS_API_KEY = 'your api key'
 SCRAPEOPS_PROXY_ENABLED = True
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -23,7 +23,7 @@ ROBOTSTXT_OBEY = False
 
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 5
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -57,6 +57,7 @@ DOWNLOADER_MIDDLEWARES = {
     #"amo.middlewares.AmoDownloaderMiddleware": 543,
     "amo.middlewares.ScrapeOpsFakeBrowserHeaderAgentMiddleware": 500,
     "scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk": 720,
+    "scrapy.downloadermiddlewares.retry.RetryMiddleware": 750,
 
 }
 
