@@ -12,7 +12,7 @@ BOT_NAME = "amo"
 SPIDER_MODULES = ["amo.spiders"]
 NEWSPIDER_MODULE = "amo.spiders"
 
-SCRAPEOPS_API_KEY = 'your api key'
+SCRAPEOPS_API_KEY = 'your api'
 SCRAPEOPS_PROXY_ENABLED = True
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
