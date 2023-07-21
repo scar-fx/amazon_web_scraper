@@ -12,6 +12,10 @@ BOT_NAME = "amo"
 SPIDER_MODULES = ["amo.spiders"]
 NEWSPIDER_MODULE = "amo.spiders"
 
+FEEDS = {
+    'data.json': {'format': 'json'}
+    }
+
 SCRAPEOPS_API_KEY = '8069377b-f3de-4f49-a1cc-1e0a0de83c5c'
 SCRAPEOPS_PROXY_ENABLED = True
 
