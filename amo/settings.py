@@ -16,7 +16,7 @@ FEEDS = {
     'data.json': {'format': 'json'}
     }
 
-SCRAPEOPS_API_KEY = '8069377b-f3de-4f49-a1cc-1e0a0de83c5c'
+SCRAPEOPS_API_KEY = '2c31d874-1dcb-4438-90c9-bb3a875d2e9a'
 SCRAPEOPS_PROXY_ENABLED = True
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
