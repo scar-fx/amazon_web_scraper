@@ -19,6 +19,8 @@ FEEDS = {
 SCRAPEOPS_API_KEY = '2c31d874-1dcb-4438-90c9-bb3a875d2e9a'
 SCRAPEOPS_PROXY_ENABLED = True
 
+
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "amo (+http://www.yourdomain.com)"
 
@@ -61,7 +63,8 @@ DOWNLOADER_MIDDLEWARES = {
     #"amo.middlewares.AmoDownloaderMiddleware": 543,
     "amo.middlewares.ScrapeOpsFakeBrowserHeaderAgentMiddleware": 500,
     "scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk": 720,
-    "scrapy.downloadermiddlewares.retry.RetryMiddleware": 750,
+    'scrapeops_scrapy.middleware.retry.RetryMiddleware': 550,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
 
 }
 
@@ -70,7 +73,9 @@ DOWNLOADER_MIDDLEWARES = {
 #EXTENSIONS = {
 #    "scrapy.extensions.telnet.TelnetConsole": None,
 #}
-
+EXTENSIONS = {
+    'scrapeops_scrapy.extension.ScrapeOpsMonitor': 500,
+}
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
