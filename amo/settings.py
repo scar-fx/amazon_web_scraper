@@ -16,7 +16,7 @@ FEEDS = {
     'data.json': {'format': 'json'}
     }
 
-SCRAPEOPS_API_KEY = '2c31d874-1dcb-4438-90c9-bb3a875d2e9a'
+SCRAPEOPS_API_KEY = 'api'
 SCRAPEOPS_PROXY_ENABLED = True
 
 
