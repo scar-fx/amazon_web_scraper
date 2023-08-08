@@ -7,4 +7,4 @@ Also make sure to install
 for API proxy rotation so you don’t get banned and monitoring  personally im using scrape ops.
  And add you API key in the settings 
  
-`SCRAPEOPS_API_KEY = 'YOUR_API_KEY' .`
+`SCRAPEOPS_API_KEY = 'YOUR_API_KEY' ...`
